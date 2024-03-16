@@ -14,7 +14,7 @@ function alpha_assets(){
 }
 add_action("wp_enqueue_scripts", "alpha_assets");
 
-function alpha_sidebar(){
+function alpha2_sidebar(){
     register_sidebar(
         array(
             'name'      => __('Single Post Sidebar', 'alpha'),
@@ -51,4 +51,4 @@ function alpha_sidebar(){
         )
     );
 }
-add_action( "widgets_init", "alpha_sidebar" );
+add_action( "widgets_init", "alpha2_sidebar" );
