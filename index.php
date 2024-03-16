@@ -36,9 +36,7 @@
                         <strong><?php the_author(); ?></strong><br/>
                         <?php the_date(); ?>
                     </p>
-                    <ul class="list-unstyled">
-                        <li>dhaka</li>
-                    </ul>
+                    <?php echo get_the_tag_list("<ul class=\"list-unstyled\"><li>","</li><li>","</li></ul>"); ?>
                 </div>
                 <div class="col-md-8">
                     <p>
@@ -49,7 +47,7 @@
                         ?>
                     </p>
 
-                    <?php the_content(); ?>
+                    <?php the_excerpt(); ?>
                 </div>
             </div>
 
@@ -57,7 +55,22 @@
     </div>
     <?php
     }
-    ?>    
+    ?>
+    
+    <div class="container post-pagination">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-8">
+                <?php
+                    the_posts_pagination( array(
+                        "screen_reader_text"=>' ',
+                        "prev_text"=>"New Posts",
+                        "next_text"=>"Old Posts"
+                    ) );
+                ?>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="footer">
     <div class="container">

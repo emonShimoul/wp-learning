@@ -69,3 +69,7 @@ h2.post-title {
     max-width: 80%;
     height: auto;
 }
+
+.post-pagination{
+    margin-bottom: 50px;
+}
