@@ -32,6 +32,11 @@
                     </p>
 
                     <?php
+                        // if(!post_password_required()){
+                        //     the_excerpt();
+                        // }else{
+                        //     echo get_the_password_form();
+                        // }
                         the_excerpt();
                     ?>
                 </div>
