@@ -1,5 +1,11 @@
 <?php
 
+if(site_url()=="http://localhost/wordpress"){
+    define("VERSION", time());
+}else{
+    define("VERSION", wp_get_theme()->get("Version"));
+}
+
 function alpha2_bootstrapping(){
     load_theme_textdomain("alpha2");
     add_theme_support("post-thumbnails");
@@ -11,7 +17,7 @@ add_action("after_setup_theme", "alpha2_bootstrapping");
 
 // to load css and bootstrap file
 function alpha2_assets(){
-    wp_enqueue_style("alpha2", get_stylesheet_uri());
+    wp_enqueue_style("alpha2", get_stylesheet_uri(), null, VERSION);
     wp_enqueue_style("bootstrap", "//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css");
     wp_enqueue_style("featherlight-css", "//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css");
     wp_enqueue_script("featherlight-js", "//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js",array("jquery"), "0.0.1", true);
@@ -19,7 +25,7 @@ function alpha2_assets(){
     // old system to load internal js
     // wp_enqueue_script("alpha2-main", get_template_directory_uri()."/assets/js/main.js",null,"0.0.1",true);
     // new system to load internal js (only work from the wordpress version 4.7)
-    wp_enqueue_script("alpha2-main", get_theme_file_uri("/assets/js/main.js"),null,"0.0.1",true);
+    wp_enqueue_script("alpha2-main", get_theme_file_uri("/assets/js/main.js"),null,VERSION,true);
 }
 add_action("wp_enqueue_scripts", "alpha2_assets");
 
