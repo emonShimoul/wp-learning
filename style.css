@@ -89,3 +89,11 @@ h2.post-title {
 .page-header h3{
     color: #f4f1f1;
 }
+
+.header-logo{
+    margin-top: 50px;
+}
+
+.header-logo img{
+    border-radius: 50px;
+}
