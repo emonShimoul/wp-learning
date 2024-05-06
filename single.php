@@ -1,14 +1,17 @@
+<?php
+$alpha_layout_class = "col-md-8";
+if(!is_active_sidebar("sidebar-1")){
+    $alpha_layout_class = "col-md-10 offset-md-1";
+}
+?>
+
 <?php get_header(); ?>
 <body <?php body_class(); ?>>
 <?php get_template_part("/template-parts/common/hero"); ?>
 
 <div class="container">
     <div class="row">
-        <?php if(is_active_sidebar("sidebar-1")){ ?>
-        <div class="col-md-8">
-            <?php }else{ ?>
-            <div class="col-md-10 offset-md-1">
-            <?php } ?>
+        <div class="<?php echo $alpha_layout_class; ?>">
             <div class="posts">
                 <?php
                 while(have_posts()){
@@ -93,15 +96,15 @@
                 </div>
             </div>
         </div>
-        <?php if(is_active_sidebar("sidebar-1")){ ?>
-        <div class="col-md-4">
-            <?php
-                if(is_active_sidebar("sidebar-1")){
-                    dynamic_sidebar("sidebar-1");
-                }
-            ?>
-        </div>
-        <?php } ?>
+        <?php if(is_active_sidebar("sidebar-1")): ?>
+            <div class="col-md-4">
+                <?php
+                    if(is_active_sidebar("sidebar-1")){
+                        dynamic_sidebar("sidebar-1");
+                    }
+                ?>
+            </div>
+        <?php endif; ?>
     </div>
 </div>
 
