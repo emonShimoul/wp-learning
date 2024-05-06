@@ -10,7 +10,7 @@
                 while(have_posts()){
                     the_post();
                 ?>
-                <div class="post" <?php post_class(); ?>>
+                <div <?php post_class(); ?>>
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
@@ -38,9 +38,11 @@
                                 <?php
                                     the_content();
 
-                                    next_post_link();
-                                    echo "<br/>";
-                                    previous_post_link();
+                                    wp_link_pages();
+
+                                    // next_post_link();
+                                    // echo "<br/>";
+                                    // previous_post_link();
                                 ?>
                             </div>
 

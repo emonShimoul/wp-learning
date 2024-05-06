@@ -7,7 +7,7 @@
     while(have_posts()){
         the_post();
     ?>
-    <div class="post" <?php post_class(); ?>>
+    <div <?php post_class(); ?>>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -21,6 +21,21 @@
                         <?php the_date(); ?>
                     </p>
                     <?php echo get_the_tag_list("<ul class=\"list-unstyled\"><li>","</li><li>","</li></ul>"); ?>
+
+                    <?php
+                    $alpha_format = get_post_format();
+                    if($alpha_format=="audio"){
+                        echo '<span class="dashicons dashicons-format-audio"></span>';
+                    }else if($alpha_format=="video"){
+                        echo '<span class="dashicons dashicons-format-video"></span>';
+                    }else if($alpha_format=="image"){
+                        echo '<span class="dashicons dashicons-format-image"></span>';
+                    }else if($alpha_format=="quote"){
+                        echo '<span class="dashicons dashicons-format-quote"></span>';
+                    }else if($alpha_format=="link"){
+                        echo '<span class="dashicons dashicons-admin-links"></span>';
+                    }
+                    ?>
                 </div>
                 <div class="col-md-8">
                     <p>
