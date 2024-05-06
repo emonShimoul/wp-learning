@@ -2,6 +2,7 @@
 $alpha_layout_class = "col-md-8";
 if(!is_active_sidebar("sidebar-1")){
     $alpha_layout_class = "col-md-10 offset-md-1";
+    $alpha_text_class = "text-center";
 }
 ?>
 
@@ -21,8 +22,8 @@ if(!is_active_sidebar("sidebar-1")){
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
-                                <h2 class="post-title"><?php the_title(); ?></h2>
-                                <p class="">
+                                <h2 class="post-title <?php echo $alpha_text_class; ?>"><?php the_title(); ?></h2>
+                                <p class="<?php echo $alpha_text_class; ?>">
                                     <strong><?php the_author(); ?></strong><br/>
                                     <?php the_date(); ?>
                                 </p>
@@ -30,17 +31,19 @@ if(!is_active_sidebar("sidebar-1")){
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <p>
-                                    <?php
-                                    if(has_post_thumbnail()){
-                                        $thumbnail_url = get_the_post_thumbnail_url(null, "large");
-                                        // echo '<a href="'.$thumbnail_url'" data-featherlight="image">';
-                                        printf('<a href="%s" data-featherlight="image">', $thumbnail_url);
-                                        the_post_thumbnail("large", "class='img-fluid'");
-                                        echo '</a>';
-                                    }
-                                    ?>
-                                </p>
+                                <div class="<?php echo $alpha_text_class; ?>">
+                                    <p>
+                                        <?php
+                                        if(has_post_thumbnail()){
+                                            $thumbnail_url = get_the_post_thumbnail_url(null, "large");
+                                            // echo '<a href="'.$thumbnail_url'" data-featherlight="image">';
+                                            printf('<a href="%s" data-featherlight="image">', $thumbnail_url);
+                                            the_post_thumbnail("large", "class='img-fluid'");
+                                            echo '</a>';
+                                        }
+                                        ?>
+                                    </p>
+                                </div>
 
                                 <?php
                                     the_content();
