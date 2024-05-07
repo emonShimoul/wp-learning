@@ -146,4 +146,16 @@ function alpha_about_page_template_banner(){
 }
 add_action("wp_head", "alpha_about_page_template_banner", 11);
 
+function alpha_body_class($classes){
+    unset($classes[array_search("custom-background", $classes)]);
+    unset($classes[array_search("single-format-standard", $classes)]);
+    $classes[] = "newclass"; // it will add a new class in the body tag
+    return $classes;
+}
+add_filter("body_class", "alpha_body_class");
 
+function alpha_post_class($classes){
+    unset($classes[array_search("format-standard", $classes)]);
+    return $classes;
+}
+add_filter("post_class", "alpha_post_class");
