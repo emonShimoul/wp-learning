@@ -32,7 +32,22 @@ if(!is_active_sidebar("sidebar-1")){
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="<?php echo $alpha_text_class; ?>">
-                                    <p>
+                                    <div class="slider">
+                                        <?php
+                                        if ( class_exists( 'Attachments' ) ) {
+                                            $attachments = new Attachments( 'slider' );
+                                            if ( $attachments->exist() ) {
+                                                while ( $attachment = $attachments->get() ) { ?>
+                                                    <div>
+                                                        <?php echo $attachments->image( 'large' ); ?>
+                                                    </div>
+                                                    <?php
+                                                }
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                    <div>
                                         <?php
                                         if(has_post_thumbnail()){
                                             $thumbnail_url = get_the_post_thumbnail_url(null, "large");
@@ -42,7 +57,7 @@ if(!is_active_sidebar("sidebar-1")){
                                             echo '</a>';
                                         }
                                         ?>
-                                    </p>
+                                    </div>
                                 </div>
 
                                 <?php
