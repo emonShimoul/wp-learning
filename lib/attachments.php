@@ -1,7 +1,10 @@
 <?php
 
-define( 'ATTACHMENTS_SETTINGS_SCREEN', false ); // disable the Settings screen in wp admin bar
-add_filter( 'attachments_default_instance', '__return_false' ); // disable the default instance in the post page of wp admin bar
+// disable the Settings screen in wp admin bar
+define( 'ATTACHMENTS_SETTINGS_SCREEN', false ); 
+
+// disable the default instance in the post page of wp admin bar
+add_filter( 'attachments_default_instance', '__return_false' ); 
 
 // For creating a slider
 function alpha2_attachments($attachments){
