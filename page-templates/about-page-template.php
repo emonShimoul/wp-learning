@@ -17,6 +17,7 @@ get_header();
     <div class="post" <?php post_class(); ?>>
         <div class="container">
             <div class="row">
+
                 <div class="col-md-10 offset-md-1">
                     <h2 class="post-title text-center"><?php the_title(); ?></h2>
                     <p class="text-center">
@@ -26,6 +27,41 @@ get_header();
                 </div>
             </div>
             <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <h2 class="text-center">
+                        <!-- 
+                            _e() means that the text will be translatable.
+                            If we want to make any text translatable then we need to use _e(). 
+                        -->
+                        <?php _e("Testimonials","alpha") ?>
+                    </h2>
+                    <div class="testimonials text-center">
+                        <?php
+                        if ( class_exists( 'Attachments' ) ) {
+                            $attachments = new Attachments( 'testimonials' );
+                            if ( $attachments->exist() ) {
+                                while ( $attachment = $attachments->get() ) { ?>
+                                    <div>
+                                        <?php echo $attachments->image( 'thumbnail' ); ?>
+                                        <h4><?php echo esc_html($attachments->field( 'name' )); ?></h4>
+                                        <p><?php echo esc_html($attachments->field( 'testimonial' )); ?></p>
+                                        <p>
+                                            <?php echo esc_html($attachments->field( 'position' )); ?>,
+                                            <strong>
+                                            <?php echo esc_html($attachments->field( 'company' )); ?>
+                                            </strong>
+                                        </p>
+                                    </div>
+                                    <?php
+                                }
+                            }
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                
                 <div class="col-md-10 md-offset-1 text-center">
                     <p>
                         <?php

@@ -46,9 +46,9 @@ function alpha2_testimonial_attachments($attachments){
             'label'     => __('Company', 'alpha2'),
         ),
         array(
-            'name'      => 'testimonials',
+            'name'      => 'testimonial',
             'type'      => 'textarea',
-            'label'     => __('Testimonials', 'alpha2'),
+            'label'     => __('Testimonial', 'alpha2'),
         ),
     );
 
