@@ -28,14 +28,17 @@ get_header();
             </div>
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <h2 class="text-center">
-                        <!-- 
-                            _e() means that the text will be translatable.
-                            If we want to make any text translatable then we need to use _e(). 
-                        -->
-                        <?php _e("Testimonials","alpha") ?>
-                    </h2>
-                    <div class="testimonials text-center">
+
+                    <?php if ( class_exists( 'Attachments' ) ) { ?>
+                        <h2 class="text-center">
+                            <!-- 
+                                _e() means that the text will be translatable.
+                                If we want to make any text translatable then we need to use _e(). 
+                            -->
+                            <?php _e("Testimonials","alpha") ?>
+                        </h2>
+                    <?php } ?>
+                    <div class="testimonials slider text-center">
                         <?php
                         if ( class_exists( 'Attachments' ) ) {
                             $attachments = new Attachments( 'testimonials' );
@@ -61,8 +64,7 @@ get_header();
                 </div>
             </div>
             <div class="row">
-                
-                <div class="col-md-10 md-offset-1 text-center">
+                <div class="col-md-10 md-offset-1 text-center mt-4 pt-4">
                     <p>
                         <?php
                         if(has_post_thumbnail()){

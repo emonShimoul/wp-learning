@@ -31,7 +31,7 @@ add_action( 'attachments_register', 'alpha2_attachments' );
 function alpha2_testimonial_attachments($attachments){
     $fields = array(
         array(
-            'name'      => 'title',
+            'name'      => 'name',
             'type'      => 'text',
             'label'     => __('Name', 'alpha2'),
         ),
