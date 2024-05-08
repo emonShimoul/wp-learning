@@ -1,4 +1,8 @@
 <?php
+if(class_exists('Attachments')){
+    // die();
+    require_once "lib/attachments.php";
+}
 
 if(site_url()=="http://localhost/wordpress"){
     define("VERSION", time());
