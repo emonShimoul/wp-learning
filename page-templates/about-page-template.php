@@ -27,6 +27,7 @@ get_header();
                 </div>
             </div>
 
+            <!-- Testimonial Section -->
             <div class="row">
                 <div class="col-md-8 offset-md-2">
                     <!-- for displaying Testimonials Heading conditionally only for Testimonials section  -->
@@ -70,7 +71,8 @@ get_header();
                     </div>
                 </div>
             </div>
-
+            
+            <!-- Team Members Section -->
             <?php if ( class_exists( 'Attachments' ) ) { ?>
                 <div class="row">
                     <?php
