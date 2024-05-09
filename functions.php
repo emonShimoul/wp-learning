@@ -14,6 +14,7 @@ function alpha2_bootstrapping(){
     load_theme_textdomain("alpha2");
     add_theme_support("post-thumbnails");
     add_theme_support("title-tag");
+    add_theme_support( 'html5', array( 'search-form' ) );
     $alpha_custom_header_details = array(
         'header-text'           => true,
         'default-text-color'    => '#222',
