@@ -4,6 +4,7 @@
 
 <div class="container">
     <?php if(is_front_page()){ ?>
+
         <!-- Testimonial Section -->
         <div class="row">
             <div class="col-md-8 offset-md-2">
@@ -48,6 +49,7 @@
                 </div>
             </div>
         </div>
+        
     <?php } ?>
 </div>
 
