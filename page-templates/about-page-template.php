@@ -26,43 +26,76 @@ get_header();
                     </p>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-md-8 offset-md-2">
+                    <!-- for displaying Testimonials Heading conditionally only for Testimonials section  -->
+                    <?php
+                    $attachments = new Attachments( 'testimonials' );
+                    if ( class_exists( 'Attachments' ) ) {
+                        if ( $attachments->exist() ) {
+                            ?>
+                            <h2 class="text-center mb-4">
+                                <!-- 
+                                    _e() means that the text will be translatable.
+                                    If we want to make any text translatable then we need to use _e(). 
+                                -->
+                                <?php _e("Testimonials","alpha") ?>
+                            </h2> 
+                            
+                    <?php }} ?>
 
-                    <?php if ( class_exists( 'Attachments' ) ) { ?>
-                        <h2 class="text-center">
-                            <!-- 
-                                _e() means that the text will be translatable.
-                                If we want to make any text translatable then we need to use _e(). 
-                            -->
-                            <?php _e("Testimonials","alpha") ?>
-                        </h2>
-                    <?php } ?>
                     <div class="testimonials slider text-center">
                         <?php
-                        if ( class_exists( 'Attachments' ) ) {
                             $attachments = new Attachments( 'testimonials' );
-                            if ( $attachments->exist() ) {
-                                while ( $attachment = $attachments->get() ) { ?>
-                                    <div>
-                                        <?php echo $attachments->image( 'thumbnail' ); ?>
-                                        <h4><?php echo esc_html($attachments->field( 'name' )); ?></h4>
-                                        <p><?php echo esc_html($attachments->field( 'testimonial' )); ?></p>
-                                        <p>
-                                            <?php echo esc_html($attachments->field( 'position' )); ?>,
-                                            <strong>
-                                            <?php echo esc_html($attachments->field( 'company' )); ?>
-                                            </strong>
-                                        </p>
-                                    </div>
-                                    <?php
+                            if ( class_exists( 'Attachments' ) ) {
+                                if ( $attachments->exist() ) {
+                                    while ( $attachment = $attachments->get() ) { ?>
+                                        <div>
+                                            <?php echo $attachments->image( 'thumbnail' ); ?>
+                                            <h4><?php echo esc_html($attachments->field( 'name' )); ?></h4>
+                                            <p><?php echo esc_html($attachments->field( 'testimonial' )); ?></p>
+                                            <p>
+                                                <?php echo esc_html($attachments->field( 'position' )); ?>,
+                                                <strong>
+                                                <?php echo esc_html($attachments->field( 'company' )); ?>
+                                                </strong>
+                                            </p>
+                                        </div>
+                                        <?php
+                                    }
                                 }
                             }
-                        }
                         ?>
                     </div>
                 </div>
             </div>
+
+            <?php if ( class_exists( 'Attachments' ) ) { ?>
+                <div class="row">
+                    <?php
+                    $attachments = new Attachments( 'team' );
+                    if ( $attachments->exist() ) {
+                        while ( $attachment = $attachments->get() ) { ?>
+                            <div class="col-md-4">
+                                <?php echo $attachments->image( 'medium' ); ?>
+                                <h4><?php echo esc_html($attachments->field( 'name' )); ?></h4>
+                                <p>
+                                    <?php echo esc_html($attachments->field( 'position' )); ?>,
+                                    <strong>
+                                    <?php echo esc_html($attachments->field( 'company' )); ?>
+                                    </strong>
+                                </p>
+                                <p><?php echo esc_html($attachments->field( 'bio' )); ?></p>
+                                <p><?php echo esc_html($attachments->field( 'email' )); ?></p>
+                            </div>
+                            <?php
+                        }
+                    }
+                    ?>
+                </div>
+            <?php } ?>
+
             <div class="row">
                 <div class="col-md-10 md-offset-1 text-center mt-4 pt-4">
                     <p>
