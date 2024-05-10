@@ -37,6 +37,11 @@ function alpha2_bootstrapping(){
     register_nav_menu("footermenu", __("Footer Menu", "alpha2"));
 
     add_theme_support( "post-formats", array("image", "quote", "video", "audio", "link") );
+
+    add_image_size( 'alpha-square', 400, 400, true );
+    add_image_size( 'alpha-potrait', 400, 9999 );
+    add_image_size( 'alpha-landscape', 9999, 400 );
+    add_image_size( 'alpha-landscape-hard-cropped', 600, 400 );
 }
 add_action("after_setup_theme", "alpha2_bootstrapping");
 
