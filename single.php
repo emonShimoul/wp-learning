@@ -56,6 +56,14 @@ if(!is_active_sidebar("sidebar-1")){
                                             the_post_thumbnail("large", "class='img-fluid'");
                                             echo '</a>';
                                         }
+
+                                        the_post_thumbnail( "alpha-square" );
+                                        echo "<br/>";
+                                        the_post_thumbnail( "alpha-potrait" );
+                                        echo "<br/>";
+                                        the_post_thumbnail( "alpha-landscape" );
+                                        echo "<br/>";
+                                        the_post_thumbnail( "alpha-landscape-hard-cropped" );
                                         ?>
                                     </div>
                                 </div>

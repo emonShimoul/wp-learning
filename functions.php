@@ -41,7 +41,7 @@ function alpha2_bootstrapping(){
     add_image_size( 'alpha-square', 400, 400, true );
     add_image_size( 'alpha-potrait', 400, 9999 );
     add_image_size( 'alpha-landscape', 9999, 400 );
-    add_image_size( 'alpha-landscape-hard-cropped', 600, 400 );
+    add_image_size( 'alpha-landscape-hard-cropped', 800, 300 );
 }
 add_action("after_setup_theme", "alpha2_bootstrapping");
 
