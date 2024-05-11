@@ -38,10 +38,13 @@ function alpha2_bootstrapping(){
 
     add_theme_support( "post-formats", array("image", "quote", "video", "audio", "link") );
 
-    add_image_size( 'alpha-square', 400, 400, true );
-    add_image_size( 'alpha-potrait', 400, 9999 );
-    add_image_size( 'alpha-landscape', 9999, 400 );
-    add_image_size( 'alpha-landscape-hard-cropped', 800, 300 );
+    add_image_size( 'alpha-square',400,400,true );
+    // add_image_size( 'alpha-potrait', 400, 9999 );
+    // add_image_size( 'alpha-landscape', 9999, 400 );
+    // add_image_size( 'alpha-landscape-hard-cropped', 800, 300 );
+    add_image_size( 'alpha-square-new1',401,401,array("left","top") );
+    add_image_size( 'alpha-square-new2',500,500,array("center","center") );
+    add_image_size( 'alpha-square-new2',600,600,array("right","center") );
 }
 add_action("after_setup_theme", "alpha2_bootstrapping");
 
@@ -185,3 +188,10 @@ function alpha2_highlight_search_results($text){
 add_filter('the_content', 'alpha2_highlight_search_results');
 add_filter('the_excerpt', 'alpha2_highlight_search_results');
 add_filter('the_title', 'alpha2_highlight_search_results');
+
+// To remove wordpress default behavior of applying src set.
+// It creates an issue with cropping image
+function alpha_image_srcset(){
+    return null;
+}
+add_filter("wp_calculate_image_srcset", "alpha_image_srcset");

@@ -57,13 +57,13 @@ if(!is_active_sidebar("sidebar-1")){
                                             echo '</a>';
                                         }
 
-                                        the_post_thumbnail( "alpha-square" );
-                                        echo "<br/>";
-                                        the_post_thumbnail( "alpha-potrait" );
-                                        echo "<br/>";
-                                        the_post_thumbnail( "alpha-landscape" );
-                                        echo "<br/>";
-                                        the_post_thumbnail( "alpha-landscape-hard-cropped" );
+                                        // the_post_thumbnail( "alpha-square" );
+                                        echo "<br/><br/>";
+                                        the_post_thumbnail( "alpha-square-new1" );
+                                        echo "<br/><br/>";
+                                        the_post_thumbnail( "alpha-square-new2" );
+                                        echo "<br/><br/>";
+                                        the_post_thumbnail( "alpha-square-new3" );
                                         ?>
                                     </div>
                                 </div>
