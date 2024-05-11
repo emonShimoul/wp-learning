@@ -124,41 +124,44 @@ function alpha_menu_item_class($classes, $item){
 }
 add_filter("nav_menu_css_class", "alpha_menu_item_class", 10, 2);
 
-function alpha_about_page_template_banner(){
-    if(is_page()){
-        $alpha_feat_image = get_the_post_thumbnail_url(null, "large");
-    ?>
-    <style>
-        .page-header{
-            background-image: url(<?php echo $alpha_feat_image; ?>);
+if(!function_exists("alpha_about_page_template_banner")){
+    function alpha_about_page_template_banner(){
+        if(is_page()){
+            $alpha_feat_image = get_the_post_thumbnail_url(null, "large");
+        ?>
+        <style>
+            .page-header{
+                background-image: url(<?php echo $alpha_feat_image; ?>);
+            }
+        </style>
+        <?php
         }
-    </style>
-    <?php
-    }
-
-    if(is_front_page()){
-        if(current_theme_supports("custom-header")){
-            ?>
-            <style>
-                .header{
-                    background-image: url(<?php echo header_image(); ?>);
-                    margin-bottom: 50px;
-                }
-
-                .header h1.heading a, h3.tagline{
-                    color: #<?php echo get_header_textcolor(); ?>;
-
-                    <?php
-                    if(!display_header_text()){
-                        echo "display: none;";
+    
+        if(is_front_page()){
+            if(current_theme_supports("custom-header")){
+                ?>
+                <style>
+                    .header{
+                        background-image: url(<?php echo header_image(); ?>);
+                        margin-bottom: 50px;
                     }
-                    ?>
-                }
-            </style>
-            <?php
+    
+                    .header h1.heading a, h3.tagline{
+                        color: #<?php echo get_header_textcolor(); ?>;
+    
+                        <?php
+                        if(!display_header_text()){
+                            echo "display: none;";
+                        }
+                        ?>
+                    }
+                </style>
+                <?php
+            }
         }
     }
 }
+
 add_action("wp_head", "alpha_about_page_template_banner", 11);
 
 function alpha_body_class($classes){
@@ -195,3 +198,9 @@ function alpha_image_srcset(){
     return null;
 }
 add_filter("wp_calculate_image_srcset", "alpha_image_srcset");
+
+if(!function_exists("alpha_todays_date")){
+    function alpha_todays_date(){
+        echo date("d/m/y");
+    }
+}
