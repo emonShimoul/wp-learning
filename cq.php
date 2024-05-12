@@ -10,10 +10,14 @@
 
 <div class="posts text-center">
     <?php
+    $paged = get_query_var("paged")?get_query_var("paged"):1;
+    $posts_per_page = 2;
+    $post_ids = array(105, 107, 8, 12, 1);
     $_p = get_posts(array(
-        'posts_per_page' => 2,
-        'post__in' => array(105,107,8),
-        'orderby' => 'post__in'
+        'posts_per_page' => $posts_per_page,
+        'post__in' => $post_ids,
+        'orderby' => 'post__in',
+        'paged' => $paged
         // 'order'=>'asc'
     ));
     foreach($_p as $post){
@@ -31,11 +35,9 @@
             <div class="col-md-4"></div>
             <div class="col-md-8">
                 <?php
-                    the_posts_pagination( array(
-                        "screen_reader_text"=>' ',
-                        "prev_text"=>"New Posts",
-                        "next_text"=>"Old Posts"
-                    ) );
+                    echo paginate_links( array(
+                        'total'=> ceil(count($post_ids) / $posts_per_page)
+                    ));
                 ?>
             </div>
         </div>
