@@ -31,8 +31,22 @@
         //     ),
         // )
 
-        'meta_key' => 'featured',
-        'meta_value' => '1',
+        // 'meta_key' => 'featured',
+        // 'meta_value' => '1',
+
+        'meta_query' => array(
+            'relation' => 'AND',
+            array(
+                'key' => 'featured',
+                'value' => '1',
+                'compare' => '='
+            ),
+            array(
+                'key' => 'homepage',
+                'value' => '1',
+                'compare' => '='
+            )
+        )
     ));
     while($_p->have_posts()){
         $_p->the_post();
