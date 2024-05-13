@@ -15,7 +15,7 @@
     $total = 9;
     $post_ids = array(105, 8, 1, 107, 12);
     $_p = new WP_Query(array(
-        // 'posts_per_page' => $posts_per_page,
+        'posts_per_page' => $posts_per_page,
         'post__in' => $post_ids,
         // 'author__in' => array(1), // to display the specific author's post
         'orderby' => 'post__in',
@@ -33,13 +33,17 @@
     ?>
 
 <div class="container post-pagination">
-        <h2>
-            <?php the_title(); ?>
-        </h2>
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-8">
                 <?php
+                    echo paginate_links( array(
+                        'total'=> $_p->max_num_pages,
+                        'current' => $paged,
+                        'prev_next' => false,
+                        // 'prev_text' => __('Old Posts','alpha2'),
+                        // 'next_text' => __('New Posts','alpha2'),
+                    ));
                 ?>
             </div>
         </div>
