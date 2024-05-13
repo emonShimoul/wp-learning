@@ -17,19 +17,22 @@
         // 'tag' => 'special',
         'posts_per_page' => $posts_per_page,
         'paged' => $paged,
-        'tax_query' => array(
-            'relation' => 'OR',
-            array(
-                'taxonomy' => 'post_format',
-                'field' => 'slug',
-                'terms' => array(
-                    'post-format-audio',
-                    'post-format-video'
-                ),
-                // display posts without audio and video format
-                // 'operator'=>'NOT IN'
-            ),
-        )
+        // 'tax_query' => array(
+        //     'relation' => 'OR',
+        //     array(
+        //         'taxonomy' => 'post_format',
+        //         'field' => 'slug',
+        //         'terms' => array(
+        //             'post-format-audio',
+        //             'post-format-video'
+        //         ),
+        //         // display posts without audio and video format
+        //         // 'operator'=>'NOT IN'
+        //     ),
+        // )
+
+        'meta_key' => 'featured',
+        'meta_value' => '1',
     ));
     while($_p->have_posts()){
         $_p->the_post();
