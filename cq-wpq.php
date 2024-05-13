@@ -12,11 +12,24 @@
     <?php
     $paged = get_query_var("paged")?get_query_var("paged"):1;
     $posts_per_page = 3;
-    $post_ids = array(105, 8, 1, 107, 12);
     $_p = new WP_Query(array(
-        'category_name' => 'default',
+        // 'category_name' => 'default',
+        // 'tag' => 'special',
         'posts_per_page' => $posts_per_page,
-        'paged' => $paged
+        'paged' => $paged,
+        'tax_query' => array(
+            'relation' => 'OR',
+            array(
+                'taxonomy' => 'category',
+                'field' => 'slug',
+                'terms' => array('default')
+            ),
+            array(
+                'taxonomy' => 'post_tag',
+                'field' => 'slug',
+                'terms' => array('special')
+            ),
+        )
     ));
     while($_p->have_posts()){
         $_p->the_post();
