@@ -15,25 +15,21 @@
     $_p = new WP_Query(array(
         // 'category_name' => 'default',
         // 'tag' => 'special',
-        // 'posts_per_page' => $posts_per_page,
-        // 'paged' => $paged,
-        // 'tax_query' => array(
-        //     'relation' => 'OR',
-        //     array(
-        //         'taxonomy' => 'category',
-        //         'field' => 'slug',
-        //         'terms' => array('default')
-        //     ),
-        //     array(
-        //         'taxonomy' => 'post_tag',
-        //         'field' => 'slug',
-        //         'terms' => array('special')
-        //     ),
-        // )
-
-        'monthnum'=>5,
-        'year'=>2024,
-        'post_status'=>'draft'
+        'posts_per_page' => $posts_per_page,
+        'paged' => $paged,
+        'tax_query' => array(
+            'relation' => 'OR',
+            array(
+                'taxonomy' => 'post_format',
+                'field' => 'slug',
+                'terms' => array(
+                    'post-format-audio',
+                    'post-format-video'
+                ),
+                // display posts without audio and video format
+                // 'operator'=>'NOT IN'
+            ),
+        )
     ));
     while($_p->have_posts()){
         $_p->the_post();
