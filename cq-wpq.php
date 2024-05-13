@@ -28,9 +28,14 @@
         <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
         <?php
     }
+
+    wp_reset_query();
     ?>
 
 <div class="container post-pagination">
+        <h2>
+            <?php the_title(); ?>
+        </h2>
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-8">
