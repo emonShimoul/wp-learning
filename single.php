@@ -80,6 +80,10 @@ if(!is_active_sidebar("sidebar-1")){
                                         echo esc_html($alpha2_location);
                                         ?> 
                                     <br>
+                                    <strong>Date:</strong> <?php the_field("date"); ?><br>
+                                    <?php if(get_field("licensed")): ?>
+                                            <?php echo apply_filters("the_content",get_field("license_information")); ?>
+                                    <?php endif; ?>
                                 </div>
                                 <?php
                                 endif;
