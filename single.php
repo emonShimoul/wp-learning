@@ -69,13 +69,25 @@ if(!is_active_sidebar("sidebar-1")){
                                 </div>
 
                                 <?php
-                                    the_content();
+                                the_content();
 
-                                    wp_link_pages();
+                                if(get_post_format()=="image"):
+                                ?>
+                                <div class="metainfo">
+                                    <strong>Camera Model:</strong> <?php the_field("camera_model"); ?><br>
+                                    <strong>Location:</strong>
+                                        <?php $alpha2_location = get_field("location"); 
+                                        echo esc_html($alpha2_location);
+                                        ?> 
+                                    <br>
+                                </div>
+                                <?php
+                                endif;
+                                wp_link_pages();
 
-                                    // next_post_link();
-                                    // echo "<br/>";
-                                    // previous_post_link();
+                                // next_post_link();
+                                // echo "<br/>";
+                                // previous_post_link();
                                 ?>
                             </div>
 
