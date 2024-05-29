@@ -92,6 +92,24 @@ if(!is_active_sidebar("sidebar-1")){
                                         echo "<img src='".esc_url($alpha_image_details[0])."'/>"; 
                                         ?>
                                     </p>
+
+                                    <p>
+                                        <?php
+                                        $file = get_field("attachment");
+                                        if($file){
+                                            $file_url = wp_get_attachment_url($file);
+                                            $file_thumb = get_field("thumbnail",$file);
+                                            if($file_thumb){
+                                                $file_thumb_details = wp_get_attachment_image_src($file_thumb);
+
+                                                echo "<a target='_blank' href='{$file_url}'><img src='".esc_url($file_thumb_details[0])."'/></a>"; 
+                                            }else{
+                                                echo "<a target='_blank' href='{$file_url}'>{$file_url}</a>"; 
+                                            }
+                                        }
+                                        ?>
+                                    </p>
+
                                 </div>
                                 <?php
                                 endif;
