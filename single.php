@@ -84,6 +84,14 @@ if(!is_active_sidebar("sidebar-1")){
                                     <?php if(get_field("licensed")): ?>
                                             <?php echo apply_filters("the_content",get_field("license_information")); ?>
                                     <?php endif; ?>
+
+                                    <p>
+                                        <?php 
+                                        $alpha2_image = get_field("image");
+                                        $alpha_image_details = wp_get_attachment_image_src($alpha2_image,"alpha-square");
+                                        echo esc_url($alpha_image_details[0]); 
+                                        ?>
+                                    </p>
                                 </div>
                                 <?php
                                 endif;
